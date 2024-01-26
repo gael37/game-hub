@@ -26,7 +26,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           <Image boxSize='32px' borderRadius={8} objectFit='cover' src={allGamesImage} />
           <Button onClick={() => onSelectGenre(null)} fontWeight='normal' fontSize='lg' variant='link'>All</Button>
         </HStack>
-        {data.map((genre: Genre) => (
+        {data?.results.map((genre: Genre) => (
           <ListItem key={genre.id} paddingY='5px'>
             <HStack>
               <Image boxSize='32px' borderRadius={8} objectFit='cover' src={getCroppedImageUrl(genre.image_background)} />
