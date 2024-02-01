@@ -1,8 +1,11 @@
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Button, Flex, HStack, Input, InputGroup, InputLeftElement, Text, useMediaQuery } from '@chakra-ui/react'
 import React, { ChangeEvent, useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import useGameQueryStore from '../store'
+import { VscDebugRestart } from "react-icons/vsc";
+import { MdClear } from "react-icons/md";
+
 
 const SearchInput = () => {
 
@@ -19,16 +22,41 @@ const SearchInput = () => {
     navigate('/')
   }
 
-  return (
+  const onClear = () => {
+    setInputValue('')
+    setSearchText('')
+  }
 
-    <InputGroup>
-      <InputLeftElement><BsSearch /></InputLeftElement>
-      <Input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-    </InputGroup>
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)')
+
+  return (
+    <>
+      {isLargerThan768 ?
+        <Button onClick={onClear} color='lightblue' size='md' fontWeight='normal' paddingX={3}>
+          Clear
+        </Button>
+        :
+        <></>
+      }
+      <InputGroup>
+        <InputLeftElement>
+          <BsSearch color='lightblue' />
+        </InputLeftElement>
+        <Input
+          width='full'
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+      </InputGroup>
+      {isLargerThan768 ?
+        <></>
+        :
+        <Button onClick={onClear} color='lightblue' size='md' fontWeight='normal' paddingX={3}>
+          <MdClear />
+        </Button>
+      }
+    </>
 
   )
 }
