@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, HStack, Heading, Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import allGamesImage from '../assets/all-video-games.webp'
-import useGenres, { Genre } from '../hooks/useGenres'
+import useGenres from '../hooks/useGenres'
+import { Genre } from "../entities/Genre"
 import getCroppedImageUrl from '../services/image-url'
 import useGameQueryStore from '../store'
 
@@ -26,7 +27,7 @@ const GenreList = () => {
           <Button
             onClick={() => {
               setSelectedGenreId(null)
-              setSearchText(null)
+              setSearchText('')
             }
             }
             fontWeight='normal'
