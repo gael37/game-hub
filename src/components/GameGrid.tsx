@@ -1,4 +1,4 @@
-import { SimpleGrid, Spinner, Text } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useGames from '../hooks/useGames'
@@ -14,6 +14,8 @@ const GameGrid = () => {
   if (error) return <Text>{error.message}</Text>
 
   const fetchedGamesCount = data?.pages.reduce((total, page) => total + page.results.length, 0) || 0
+
+  if (!data && !isLoading) return <Heading>No games match the criteria.</Heading>
 
   return (
     <InfiniteScroll
