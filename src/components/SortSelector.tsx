@@ -1,4 +1,4 @@
-import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react'
+import { Menu, MenuButton, Button, MenuList, MenuItem, useMediaQuery, Box } from '@chakra-ui/react'
 import React from 'react'
 import { BsChevronDown } from 'react-icons/bs'
 import useGameQueryStore from '../store'
@@ -19,9 +19,13 @@ const SortSelector = () => {
 
   const currentSortOrder = sortOrders.find(order => order.value === sortOrder)
 
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)')
+
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>Order by {currentSortOrder?.label || 'Relevance'}</MenuButton>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        Order by {currentSortOrder?.label || 'Relevance'}
+      </MenuButton>
       <MenuList>
         {sortOrders.map(order => <MenuItem
           onClick={() => setSortOrder(order.value)}
@@ -36,3 +40,4 @@ const SortSelector = () => {
 }
 
 export default SortSelector
+
