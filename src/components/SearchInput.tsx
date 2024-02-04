@@ -31,31 +31,39 @@ const SearchInput = () => {
 
   return (
     <>
-      {isLargerThan768 ?
+      {/* {isLargerThan768 ?
         <Button onClick={onClear} color='lightblue' size='md' fontWeight='normal' paddingX={3}>
           Clear
         </Button>
         :
         <></>
-      }
+      } */}
       <InputGroup>
-        <InputLeftElement>
+        {/* <InputLeftElement>
           <BsSearch color='lightblue' />
+        </InputLeftElement> */}
+        <InputLeftElement>
+          {/* <MdClear color='lightblue' /> */}
+          <Button onClick={onClear} color='lightblue' size='md' fontWeight='normal' paddingX={3}>
+            <MdClear />
+          </Button>
         </InputLeftElement>
         <Input
           width='full'
           type="text"
           value={inputValue}
           onChange={handleInputChange}
+          placeholder='Search for games...'
         />
+
       </InputGroup>
-      {isLargerThan768 ?
+      {/* {isLargerThan768 ?
         <></>
         :
         <Button onClick={onClear} color='lightblue' size='md' fontWeight='normal' paddingX={3}>
           <MdClear />
         </Button>
-      }
+      } */}
     </>
 
   )

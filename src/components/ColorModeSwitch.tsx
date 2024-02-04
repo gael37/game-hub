@@ -11,9 +11,9 @@ const ColorModeSwitch = () => {
 
   return (
     <HStack>
-      <Switch colorScheme='green' isChecked={colorMode === 'dark'} onChange={toggleColorMode} />
+      <Switch colorScheme='blue' isChecked={colorMode === 'dark'} onChange={toggleColorMode} />
       < Text whiteSpace='nowrap'>
-        {isLargerThan768 ? 'Dark Mode' : <RiMoonClearFill />}
+        {isLargerThan768 ? 'Dark Mode' : <RiMoonClearFill size={22} color='lightblue' />}
       </Text>
     </HStack >
   )
